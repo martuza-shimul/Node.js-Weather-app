@@ -12,7 +12,7 @@ const forecast = (lat, lng, callback) => {
         }else if(response.body.error){
             callback('Unable to find the Location!', undefined)
         }else{
-            callback('There is no error', {
+            callback(undefined, {
                 temperature:  response.body.currently.temperature,
                 chanceOfRain: response.body.currently.precipProbability + '%',
                 Humidity: response.body.currently.humidity 

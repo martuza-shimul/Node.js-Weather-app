@@ -1,6 +1,6 @@
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
-
+// const request = require('request')
 
 
 // const url = 'https://api.darksky.net/forecast/f3f71b0caf605df5e8188ad56cb5face/37.8267,-122.4233?units=si'
@@ -43,6 +43,7 @@ const address = process.argv[2]
 if (!address){
     console.log('Please provide an address!')
 }else{
+    // Object destructuring
     geocode ( address, (error, {latitude, longitude, location}) => {
         if(error){
             return console.log(error)

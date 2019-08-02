@@ -18,7 +18,7 @@ const forecast = require('./utils/forecast')
 // })
 
 
-// // Geocoding
+// Geocoding
 
 // const url_geocode = 'https://api.mapbox.com/geocoding/v5/mapbox.places/Dhaka.json?access_token=pk.eyJ1IjoibWFydHV6YS1zaGltdWwiLCJhIjoiY2p3dGR2Ymp4MGkzaTN5bXFtcmx6NzRuMCJ9.IVmVLX5aqs21doCD-Hb-rg&limit=1'
 
@@ -38,27 +38,52 @@ const forecast = require('./utils/forecast')
 //     }
 // })
 
+// const address = process.argv[2]
+
+// if (!address){
+//     console.log('Please provide an address!')
+// }else{
+//     // Object destructuring
+//     geocode ( address, (error, {latitude, longitude, location}) => {
+//         if(error){
+//             return console.log(error)
+//         }
+    
+//         forecast(latitude,longitude, (error, forecastData) => {
+//             if(error){
+//                 return console.log(error)
+//             }
+    
+//             console.log(location)
+//             console.log(forecastData)
+//         })
+    
+        
+//     })
+// }
+  
+
 const address = process.argv[2]
 
-if (!address){
-    console.log('Please provide an address!')
-}else{
-    // Object destructuring
-    geocode ( address, (error, {latitude, longitude, location}) => {
+if (!address) {
+    console.log('Please provide an Address')
+} else {
+    geocode(address, (error, data) => {
         if(error){
-            return console.log(error)
+            return console.log('Error', error)
         }
-    
-        forecast(latitude,longitude, (error, forecastData) => {
+        
+        forecast(data.latitude, data.longitude, (error, forecastData) => {
             if(error){
                 return console.log(error)
             }
-    
-            console.log(location)
+            
+            console.log(data.location)
             console.log(forecastData)
         })
-    
         
     })
 }
-  
+
+
+
